@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.netflix.nebula:nebula-test:6.1.2'
+    }
+}
+
+task generateDependencies(type: GenerateDependencies)
+
+import nebula.test.dependencies.*
+
+class GenerateDependencies extends DefaultTask {
+    @TaskAction
+    void generate() {
+        def builder = new DependencyGraphBuilder()
+        builder.addModule(new ModuleBuilder('sustitutionrule:a:1.0.0').addDependency('sustitutionrule:substitute:1.0.0').build())
+        builder.addModule('sustitutionrule:substitute:1.0.1')
+
+        def graph = builder.build()
+        def generator = new GradleDependencyGenerator(graph)
+        generator.generateTestMavenRepo()
+    }
+}
