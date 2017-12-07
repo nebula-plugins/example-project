@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'project-report'
+
+    id 'nebula.release' version '6.1.0'
+    id 'nebula.info' version '3.6.0'
+    id 'nebula.java-cross-compile' version '0.10.0'
+
+    // one of maven-publish or ivy-publish, but can use both without issue
+    id 'nebula.maven-publish' version '5.1.5'
+    id 'nebula.ivy-publish' version '5.1.5'
+    id 'nebula.javadoc-jar' version '5.1.5'
+    id 'nebula.source-jar' version '5.1.5'
+
+    id 'nebula.override' version '3.0.2'
+    id 'nebula.optional-base' version '3.2.0'
+    id 'nebula.dependency-recommender' version '5.0.0'
+    id 'nebula.resolution-rules' version '5.0.2'
+    id 'nebula.dependency-lock' version '4.9.5'
+}
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+// setup your repositories
+repositories {
+    jcenter()
+    maven {
+        url '../repository/maven'
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+dependencyRecommendations {
+    strategy OverrideTransitives
+    map recommendations: ['overridestrategy:transitivedeb': '1.0.0']
+}
+
+dependencies {
+    compile 'overridestrategy:a:1.0.0'
+}

@@ -44,6 +44,9 @@ class GenerateDependencies extends DefaultTask {
         builder.addModule(new ModuleBuilder('replacerule:replacementex0:1.0.0').addDependency('replacerule:replacee:1.0.0').build())
         builder.addModule(new ModuleBuilder('replacerule:replacementex1:1.0.0').addDependency('replacerule:replacement:2.0.0').build())
 
+        builder.addModule(new ModuleBuilder('overridestrategy:a:1.0.0').addDependency('overridestrategy:transitivedeb:1.0.1').build())
+        builder.addModule('overridestrategy:transitivedeb:1.0.0')
+
         def graph = builder.build()
         def generator = new GradleDependencyGenerator(graph)
         generator.generateTestMavenRepo()
