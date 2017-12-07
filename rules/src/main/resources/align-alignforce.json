@@ -1,0 +1,16 @@
+{
+  "align": [
+    {
+      "name": "align-alignforce",
+      "group": "alignmentrule",
+      "includes": ["alignforce.*"],
+      "reason": "Align some jars",
+      "author": "Person McPerson <email@email>",
+      "date": "2017-12-07"
+    }
+  ],
+  "replace": [],
+  "substitute": [],
+  "deny": [],
+  "reject": []
+}

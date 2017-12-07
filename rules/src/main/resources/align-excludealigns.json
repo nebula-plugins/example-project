@@ -1,0 +1,17 @@
+{
+  "align": [
+    {
+      "name": "align-excludealigns",
+      "group": "alignmentrule",
+      "includes": ["exclude-align.*"],
+      "excludes": ["exclude-align2"],
+      "reason": "Align some jars",
+      "author": "Person McPerson <email@email>",
+      "date": "2017-12-06"
+    }
+  ],
+  "replace": [],
+  "substitute": [],
+  "deny": [],
+  "reject": []
+}

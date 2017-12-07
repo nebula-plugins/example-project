@@ -8,7 +8,7 @@ buildscript {
 }
 
 plugins {
-    id 'java'
+    id 'java-library'
     id 'project-report'
 
     id 'nebula.release' version '6.1.0'
@@ -40,9 +40,25 @@ repositories {
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 
+configurations.all {
+    resolutionStrategy {
+        force 'alignmentrule:alignforce0:2.0.0'
+    }
+}
+
 dependencies {
     nebulaRecommenderBom 'example.nebula:bom:1.+@pom'
     resolutionRules 'example.nebula:rules:1.+'
+
+    implementation 'alignmentrule:b0:1.+'
+    implementation 'alignmentrule:b1:1.+'
+    implementation 'alignmentrule:direct-align0:1.0.1'
+    implementation 'alignmentrule:direct-align1:1.1.0'
+    implementation 'alignmentrule:exclude-b0:1.+'
+    implementation 'alignmentrule:exclude-b1:1.+'
+    implementation 'alignmentrule:exclude-b2:1.+'
+    implementation 'alignmentrule:bforce0:[1.0.0,2.0.0)'
+    implementation 'alignmentrule:bforce1:[1.0.0,2.0.0)'
 
     testCompile 'org.junit.jupiter:junit-jupiter-api'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine'
