@@ -43,7 +43,17 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 dependencies {
     nebulaRecommenderBom 'example.nebula:bom:1.+@pom'
     resolutionRules 'example.nebula:rules:1.+'
+
     testCompile 'org.junit.jupiter:junit-jupiter-api'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine'
     testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
+
+    testCompile 'sustitutionrule:a:1.0.0'
+
+    compile 'sustitutionrule:directsubstitute:2.0.0'
+
+    compile 'sustitutionrule:arange0:1.0.0'
+    compile 'sustitutionrule:arange1:1.0.0'
+
+    compileOnly 'sustitutionrule:asub:1.0.0'
 }

@@ -1,0 +1,15 @@
+{
+  "replace" : [],
+  "deny": [],
+  "reject": [],
+  "align": [],
+  "substitute": [
+    {
+      "module" : "sustitutionrule:rangesubstitute:[2.0.0,2.5.0]",
+      "with" : "sustitutionrule:rangesubstitute:2.5.1",
+      "reason" : "range contains a bug",
+      "author" : "Person McPerson <person@email.com>",
+      "date" : "2017-12-06"
+    }
+  ]
+}
