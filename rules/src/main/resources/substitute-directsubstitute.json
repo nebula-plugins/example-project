@@ -1,0 +1,15 @@
+{
+  "replace" : [],
+  "deny": [],
+  "reject": [],
+  "align": [],
+  "substitute": [
+    {
+      "module" : "sustitutionrule:directsubstitute:2.0.0",
+      "with" : "sustitutionrule:directsubstitute:2.1.0",
+      "reason" : "version 2.0.0 was accidentally released from dev_branch",
+      "author" : "Person McPerson <person@email.com>",
+      "date" : "2017-12-06"
+    }
+  ]
+}

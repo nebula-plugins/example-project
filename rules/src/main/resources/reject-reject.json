@@ -1,0 +1,14 @@
+{
+  "replace" : [],
+  "align": [],
+  "substitute": [],
+  "deny": [],
+  "reject": [
+    {
+      "module": "rejectrule:reject:1.0.1",
+      "reason": "this is bad version",
+      "author": "Person McPerson <person@email.com>",
+      "date": "2017-12-07"
+    }
+  ]
+}

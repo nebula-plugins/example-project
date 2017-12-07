@@ -20,7 +20,7 @@ plugins {
     id 'nebula.ivy-publish' version '5.1.5'
     id 'nebula.javadoc-jar' version '5.1.5'
     id 'nebula.source-jar' version '5.1.5'
-    
+
     id 'nebula.override' version '3.0.2'
     id 'nebula.optional-base' version '3.2.0'
     id 'nebula.dependency-recommender' version '5.0.0'
@@ -34,31 +34,17 @@ apply plugin: 'org.junit.platform.gradle.plugin'
 repositories {
     jcenter()
     maven {
-        url 'repository/maven'
+        url '../repository/maven'
     }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 
+dependencyRecommendations {
+    strategy OverrideTransitives
+    map recommendations: ['overridestrategy:transitivedeb': '1.0.0']
+}
+
 dependencies {
-    nebulaRecommenderBom 'example.nebula:bom:1.+@pom'
-    resolutionRules 'example.nebula:rules:1.+'
-
-    testCompile 'org.junit.jupiter:junit-jupiter-api'
-    testRuntime 'org.junit.jupiter:junit-jupiter-engine'
-    testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
-
-    testCompile 'sustitutionrule:a:1.0.0'
-
-    compile 'sustitutionrule:directsubstitute:2.0.0'
-
-    compile 'sustitutionrule:arange0:1.0.0'
-    compile 'sustitutionrule:arange1:1.0.0'
-
-    compileOnly 'sustitutionrule:asub:1.0.0'
-
-    runtime 'rejectrule:reject:1.+'
-
-    runtime 'replacerule:replacementex0:1.0.0'
-    runtime 'replacerule:replacementex1:1.0.0'
+    compile 'overridestrategy:a:1.0.0'
 }

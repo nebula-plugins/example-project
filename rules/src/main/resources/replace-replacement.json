@@ -1,0 +1,15 @@
+{
+  "replace": [
+    {
+      "module": "replacerule:replacee",
+      "with": "replacerule:replacement",
+      "reason": "replacement is a new name for replacee",
+      "author": "Person McPerson <person@email.com>",
+      "date": "2017-12-07"
+    }
+  ],
+  "deny": [],
+  "reject": [],
+  "align": [],
+  "substitute": []
+}

@@ -1,0 +1,15 @@
+{
+  "replace" : [],
+  "align": [],
+  "substitute": [
+    {
+      "module" : "sustitutionrule:sub-all",
+      "with" : "sustitutionrule:sub-core:1.0.0",
+      "reason" : "sub-all is pure evil",
+      "author" : "Person McPerson <person@email.com>",
+      "date" : "2017-12-06"
+    }
+  ],
+  "deny": [],
+  "reject": []
+}
