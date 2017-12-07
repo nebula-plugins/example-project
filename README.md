@@ -6,7 +6,7 @@ An example project on how we use the nebula plugins on a simple project
 
 Dependency `a` depends on `substitute:1.0.0`. A substitution rule updates to `substitute:1.0.1`
 
-`./gradlew dependencyInsigh --dependency substitute --configuration testCompile`
+`./gradlew dependencyInsight --dependency substitute --configuration testCompile`
 
 ```
 > Task :dependencyInsight
@@ -19,7 +19,7 @@ sustitutionrule:substitute:1.0.0 -> 1.0.1
 
 Direct dependency on `directsubstitute:2.0.0`. A substitution rule updates `directsubstitute:2.1.0`
 
-`./gradlew dependencyInsigh --dependency directsubstitute --configuration compile`
+`./gradlew dependencyInsight --dependency directsubstitute --configuration compile`
 
 ```
 > Task :dependencyInsight
@@ -31,7 +31,7 @@ sustitutionrule:directsubstitute:2.0.0 -> 2.1.0
 
 Dependency `arange0` depends on `rangesubstitute:2.0.0`, `arange1` depends on `rangesubstitute:2.2.0`, A rule updates range `rangesubstitute:[2.0.0,2.5.0]` to `2.5.1`.
 
-`./gradlew dependencyInsigh --dependency rangesubstitute --configuration compile`
+`./gradlew dependencyInsight --dependency rangesubstitute --configuration compile`
 
 ```
 > Task :dependencyInsight
@@ -48,7 +48,7 @@ sustitutionrule:rangesubstitute:2.2.0 -> 2.5.1
 
 Dependency `asub` depends on `sub-all:1.0.0`, A rule update it to `sub-core:1.0.0`.
 
-`./gradlew dependencyInsigh --dependency sub-all --configuration compileOnly`
+`./gradlew dependencyInsight --dependency sub-all --configuration compileOnly`
 
 ```
 > Task :dependencyInsight
@@ -63,7 +63,7 @@ sustitutionrule:sub-all:1.0.0 -> sustitutionrule:sub-core:1.0.0
 
 Depend on `reject:1.+`, We have reject rule on `1.0.1`. It should pick only existing `1.0.0`
 
-`./gradlew dependencyInsigh --dependency reject --configuration runtime`
+`./gradlew dependencyInsight --dependency reject --configuration runtime`
 
 ```
 > Task :dependencyInsight
@@ -77,7 +77,7 @@ rejectrule:reject:1.+ -> 1.0.0
 
 Direct dependency `replacementex0` depends on `replacee:1.0.0`, another direct dependency `replacementex1` depends on `replacement:2.0.0`. `replacee` should be replaced by `replacement`.
 
-`./gradlew dependencyInsigh --dependency replacee --configuration runtime`
+`./gradlew dependencyInsight --dependency replacee --configuration runtime`
 
 ```
 > Task :dependencyInsight
@@ -92,7 +92,7 @@ replacerule:replacee:1.0.0 -> replacerule:replacement:2.0.0
 
 "Closer" defined dependencies in recommender override transitive dependencies versions. See `override_project_example`
 
-`./gradlew dependencyInsigh --dependency transitivedeb --configuration compile`
+`./gradlew dependencyInsight --dependency transitivedeb --configuration compile`
 
 ```
 > Task :dependencyInsight
