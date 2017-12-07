@@ -1,0 +1,1 @@
+This project is used to generate resolution rules to demonstrate various resolution scenarios in our example project.
