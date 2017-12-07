@@ -56,4 +56,9 @@ dependencies {
     compile 'sustitutionrule:arange1:1.0.0'
 
     compileOnly 'sustitutionrule:asub:1.0.0'
+
+    runtime 'rejectrule:reject:1.+'
+
+    runtime 'replacerule:replacementex0:1.0.0'
+    runtime 'replacerule:replacementex1:1.0.0'
 }

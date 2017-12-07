@@ -58,3 +58,32 @@ sustitutionrule:sub-all:1.0.0 -> sustitutionrule:sub-core:1.0.0
 \--- sustitutionrule:asub:1.0.0
      \--- compileOnly
 ```
+
+### c. Reject rule
+
+Depend on `reject:1.+`, We have reject rule on `1.0.1`. It should pick only existing `1.0.0`
+
+`./gradlew dependencyInsigh --dependency reject --configuration runtime`
+
+```
+> Task :dependencyInsight
+rejectrule:reject:1.0.0
+
+rejectrule:reject:1.+ -> 1.0.0
+\--- runtime
+```
+
+### d. Replacement rule
+
+Direct dependency `replacementex0` depends on `replacee:1.0.0`, another direct dependency `replacementex1` depends on `replacement:2.0.0`. `replacee` should be replaced by `replacement`.
+
+`./gradlew dependencyInsigh --dependency replacee --configuration runtime`
+
+```
+> Task :dependencyInsight
+replacerule:replacement:2.0.0 (replacement replacerule:replacee -> replacerule:replacement)
+
+replacerule:replacee:1.0.0 -> replacerule:replacement:2.0.0
+\--- replacerule:replacementex0:1.0.0
+     \--- runtime
+```
