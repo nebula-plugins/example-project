@@ -59,6 +59,77 @@ sustitutionrule:sub-all:1.0.0 -> sustitutionrule:sub-core:1.0.0
      \--- compileOnly
 ```
 
+### b. Alignment rule
+
+Dependency `b0` depends on `align0:1.0.1`, `b1` depends on `align1:1.1.0`. Alignment rule should upgrade all `align*` to `1.1.0`
+
+`./gradlew dependencyInsight --dependency align --configuration compileClasspath`
+
+```
+> Task :dependencyInsight
+alignmentrule:align0:1.1.0 (aligned to 1.1.0 by align-alignfamily)
+
+alignmentrule:align0:1.0.1 -> 1.1.0
+\--- alignmentrule:b0:1.0.0
+     \--- compileClasspath
+
+alignmentrule:align1:1.1.0
+\--- alignmentrule:b1:1.0.0
+     \--- compileClasspath
+```
+
+A project directly depends on `direct-align0` and `direct-align1`. Both should upgrade to `1.1.0`
+
+`./gradlew dependencyInsight --dependency align --configuration compileClasspath`
+
+```
+alignmentrule:direct-align0:1.1.0 (aligned to 1.1.0 by align-directalign)
+
+alignmentrule:direct-align0:1.0.1 -> 1.1.0
+\--- compileClasspath
+
+alignmentrule:direct-align1:1.1.0
+\--- compileClasspath
+```
+
+Dependency `b0` depends on align0:1.0.1, `b1` depends on `align1:1.1.0`, `b2` depends on `align2:1.0.2`. The dependency `align2` is exluded from alignment. `align0` and `align1` should have the same version `1.1.0`
+
+`./gradlew dependencyInsight --dependency align --configuration compileClasspath`
+
+```
+alignmentrule:exclude-align0:1.1.0 (aligned to 1.1.0 by align-excludealigns)
+
+alignmentrule:exclude-align0:1.0.1 -> 1.1.0
+\--- alignmentrule:exclude-b0:1.0.0
+     \--- compileClasspath
+
+alignmentrule:exclude-align1:1.1.0
+\--- alignmentrule:exclude-b1:1.0.0
+     \--- compileClasspath
+
+alignmentrule:exclude-align2:1.0.2
+\--- alignmentrule:exclude-b2:1.0.0
+     \--- compileClasspath
+```
+
+Dependency `bforce0` depends on `alignforce0:1.0.1`, `bforce1` depends on `alignforce1:1.0.2`. We force `alignforce0` to `2.0.0`, Both should be aligned to `2.0.0`.
+
+`./gradlew dependencyInsight --dependency align --configuration compileClasspath`
+
+```
+alignmentrule:alignforce0:2.0.0 (forced)
+
+alignmentrule:alignforce0:1.0.1 -> 2.0.0
+\--- alignmentrule:bforce0:1.0.0
+     \--- compileClasspath
+
+alignmentrule:alignforce1:2.0.0 (aligned to 2.0.0 by align-alignforce)
+
+alignmentrule:alignforce1:1.0.2 -> 2.0.0
+\--- alignmentrule:bforce1:1.0.0
+     \--- compileClasspath
+```
+
 ### c. Reject rule
 
 Depend on `reject:1.+`, We have reject rule on `1.0.1`. It should pick only existing `1.0.0`
