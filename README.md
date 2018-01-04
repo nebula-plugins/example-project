@@ -159,6 +159,17 @@ replacerule:replacee:1.0.0 -> replacerule:replacement:2.0.0
      \--- runtime
 ```
 
+### e. Exclude rule
+
+Direct dependency `excluderule:goodlibrary:1.0.0` has a dependency on `excluderule:badlibrary:1.0.0`. The exclude rule will prevent `excluderule:badlibrary` from being in the graph.
+
+`./gradlew dependencyInsight --dependency badlibrary --configuration compileClasspath`
+
+```
+> Task :dependencyInsight
+No dependencies matching given input were found in configuration ':compileClasspath'
+```
+
 ## 3. Recommender project that uses OverrideTransitives mode
 
 "Closer" defined dependencies in recommender override transitive dependencies versions. See `override_project_example`

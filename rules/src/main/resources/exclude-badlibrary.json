@@ -1,0 +1,15 @@
+{
+  "replace" : [],
+  "align": [],
+  "substitute": [],
+  "deny": [],
+  "reject": [],
+  "exclude": [
+    {
+      "module": "excluderule:badlibrary",
+      "reason": "badlibrary will cause issues",
+      "author" : "Person McPerson <person@email.com>",
+      "date" : "2018-01-04"
+    }
+  ]
+}
